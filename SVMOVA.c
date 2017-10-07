@@ -1,3 +1,11 @@
+/*
+
+	Author: Aniket Badhan
+	Descripton: Parallel implementation of Multi-class SVM for classification of different scenes using MPI.
+	
+*/
+
+
 #include <stdlib.h> 
 #include <stdio.h> 
 #include <math.h> 
