@@ -38,12 +38,12 @@ int main(int argc, char *argv[])
 	int donearray[25] = {0};
 	int sizearraytestdata[25] = {0};
 	int donearraytestdata[25] = {0};
-	float train_data[500][490];
-	int train_label[500] = {0};
-	float test_data[176][490];
-	int test_label[176];
+	float train_data[500][490];			//buffer for storing the training data
+	int train_label[500] = {0};			//buffer for storing the output labels for the training data
+	float test_data[176][490];			//buffer for storing the test data
+	int test_label[176];				//buffer for storing the output labels for the testing data
 	int temp_test_label[176];
-	float temp_weight_row[491] = {0};
+	float temp_weight_row[491] = {0};		//buffer for storing the weight vector
 	
 	int sizecount[25] = {0};
 	int displacement[25] = {0};
@@ -166,9 +166,8 @@ int main(int argc, char *argv[])
 	
 	start_number = donearraytestdata[myid];
 	end_number = donearraytestdata[myid] + sizearraytestdata[myid] - 1;
+	
 	//Calculating accuracy for specific data points on each processor
-	
-	
 	MPI_Bcast(WeightMatrix, OUTPUTCLASS*491, MPI_FLOAT, 0, MPI_COMM_WORLD);
 	
 	local_accuracy = SVMTesting(WeightMatrix, start_number, end_number);
